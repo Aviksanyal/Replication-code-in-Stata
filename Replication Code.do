@@ -1,0 +1,294 @@
+* IMPACT OF MASS SHOOTINGS ON MENTAL HEALTH LEGISLATION
+
+
+* Setting Panel Variables
+xtset FIPS Year
+
+gen Masshootingindicator = 0
+replace Masshootingindicator = 1 if mass_shootings > 0
+
+
+*Baseline OLS and Poisson estimates for total number of bills and laws
+reg TotalnumberofBills L.i.Masshootingindicator
+poisson TotalnumberofBills L.i.Masshootingindicator
+reg TotalnumberofBills L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare + L.suiciderate Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+poisson TotalnumberofBills L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare  L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+xtreg TotalnumberofBills L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtpoisson TotalnumberofBills L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg TotalnumberofBills L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+xtpoisson TotalnumberofBills L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+reg TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount
+poisson TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount
+reg TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+poisson TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+xtreg TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtpoisson TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+xtpoisson TotalnumberofBills L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+
+reg TotalnumberofLaws L.i.Masshootingindicator
+poisson TotalnumberofLaws L.i.Masshootingindicator
+reg TotalnumberofLaws L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.Mentalhealthcareemployees L.suiciderate Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+poisson TotalnumberofLaws L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare  L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+xtreg TotalnumberofLaws L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtpoisson TotalnumberofLaws L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg TotalnumberofLaws L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+xtpoisson TotalnumberofLaws L.i.Masshootingindicator Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+reg TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount
+poisson TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount
+reg TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+poisson TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession
+xtreg TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtpoisson TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+xtpoisson TotalnumberofLaws L.i.Masshootingindicator L.Cumulativecount Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession i.FIPS##c.Year, fe
+
+
+*Estimate for each category of legislation
+** Intensive Margin
+xtpoisson InsuranceBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson InsuranceLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson CommunityLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson GunLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+** Extensive Margin
+xtlogit InsuranceBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg InsuranceBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtlogit SchoolBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg SchoolBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit CommunityBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg CommunityBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtlogit GunBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg GunBills_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit InsuranceLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg InsuranceLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtlogit SchoolLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg SchoolLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtlogit CommunityLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg CommunityLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtlogit GunLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg GunLaws_Dummy L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+* Heterogenous impact of media coverage 
+** All networks excluding FOX News 
+
+xtpoisson InsuranceBills L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+
+xtpoisson SchoolBills L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityBills L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunBills L.i.Masshootingindicator##Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+
+xtpoisson SchoolLaws L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityLaws L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunLaws L.i.Masshootingindicator##Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson InsuranceLaws L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+
+
+
+
+
+
+**All networks including FOX news
+
+xtpoisson InsuranceBills L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+
+xtpoisson SchoolBills L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtpoisson CommunityBills L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtpoisson GunBills L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtpoisson InsuranceLaws L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+
+
+xtpoisson SchoolLaws L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtpoisson CommunityLaws L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtpoisson GunLaws L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+* Media Coverage at the extensive margin
+** All networks exclusing Fox News
+
+xtlogit InsuranceBills_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg InsuranceBills_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit SchoolBills_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg SchoolBills_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit CommunityBills_Dummy L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg CommunityBills_Dummy L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit GunBills_Dummy L.i.Masshootingindicator##Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg GunBills_Dummy L.i.Masshootingindicator##Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit InsuranceLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg GunBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+
+xtlogit SchoolLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg SchoolLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit CommunityLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg CommunityLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtlogit GunLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+xtreg GunLaws_Dummy L.i.Masshootingindicator##c.Coverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+
+
+
+
+** All networks including Fox News
+xtlogit InsuranceBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg InsuranceBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+
+xtlogit SchoolBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg SchoolBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtlogit CommunityBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg CommunityBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtlogit GunBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg GunBills_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+
+xtlogit InsuranceLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg InsuranceLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtlogit SchoolLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg SchoolLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtlogit CommunityLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg CommunityLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+xtlogit GunLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+xtreg GunLaws_Dummy L.i.Masshootingindicator##c.FOXCoverageinminutes  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession if Year>2010, fe
+
+
+* Estimates for partisanship
+
+
+xtpoisson InsuranceLaws L.i.Masshootingindicator L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolLaws L.i.Masshootingindicator L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityLaws L.i.Masshootingindicator L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunLaws L.i.Masshootingindicator  L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+*
+xtpoisson InsuranceLaws L.i.Masshootingindicator L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolLaws L.i.Masshootingindicator L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityLaws L.i.Masshootingindicator L.i.Masshootingindicator#Democratlegislature L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunLaws L.i.Masshootingindicator  L.i.Masshootingindicator# L.i.Masshootingindicator#Splitlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+*
+
+
+* Estimates for Race and mass shootings
+
+
+xtpoisson InsuranceLaws L.i.Masshootingindicator L.i.Masshootingindicator#L.i.White_Shooter L.i.Masshootingindicator#L.c.WhiteVictim_Share Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolLaws L.i.Masshootingindicator L.i.Masshootingindicator#L.i.White_Shooter L.i.Masshootingindicator#L.c.WhiteVictim_Share Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityLaws L.i.Masshootingindicator L.i.Masshootingindicator#L.i.White_Shooter L.i.Masshootingindicator#L.c.WhiteVictim_Share Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunLaws L.i.Masshootingindicator  L.i.Masshootingindicator#L.i.White_Shooter L.i.Masshootingindicator#L.c.WhiteVictim_Share Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+
+xtpoisson InsuranceBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson CommunityBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson GunBills L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+xtpoisson InsuranceLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson SchoolLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson CommunityLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+xtpoisson GunLaws L.i.Masshootingindicator  Democratlegislature Republicanlegislature Shareoffemalelegislators L.Unemploymentrate elderlyshare L.suiciderate L.Shareofmentalhealthworkers Firstyearofbiennum Regularsession, fe
+
+
+
+
